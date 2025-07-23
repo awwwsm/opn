@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Container } from '../container';
 import type { Profile as IProfile } from '@/types/profile';
@@ -6,22 +6,23 @@ import type { Profile as IProfile } from '@/types/profile';
 import styles from './profile.module.css';
 import { cn } from '@/helpers/styles';
 
-const LINK =
-  'https://raw.githubusercontent.com/remvze/.opn/refs/heads/main/bio.json';
+interface ProfileProps {
+  source: string;
+}
 
-export function Profile() {
+export function Profile({ source }: ProfileProps) {
   const [profile, setProfile] = useState<IProfile | null>(null);
 
-  const fetchProfile = async () => {
-    const res = await fetch(LINK);
+  const fetchProfile = useCallback(async () => {
+    const res = await fetch(source);
     const data = (await res.json()) as IProfile;
 
     setProfile(data);
-  };
+  }, [source]);
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [fetchProfile]);
 
   if (!profile) return null;
 

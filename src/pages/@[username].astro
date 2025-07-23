@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/layout.astro';
+import { Profile } from '@/components/profile';
+
+const { username } = Astro.params;
+
+const source = `https://raw.githubusercontent.com/${username}/.opn/refs/heads/main/bio.json`;
+const res = await fetch(source);
+const { status } = res;
+
+if (status === 404) {
+  return Astro.rewrite('/404');
+}
+---
+
+<Layout>
+  <Profile client:load source={source} />
+</Layout>

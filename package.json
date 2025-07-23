@@ -22,6 +22,7 @@
     "generate-id": "node ./scripts/generate-id.js"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "12.6.0",
     "@astrojs/react": "4.2.1",
     "@astrojs/sitemap": "3.2.1",
     "@types/react": "^18.2.48",

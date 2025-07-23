@@ -111,7 +111,7 @@
 
     & .date {
       margin-top: 4px;
-      font-size: var(--font-sm);
+      font-size: var(--font-xsm);
       color: var(--color-foreground-subtler);
     }
 
