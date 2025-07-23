@@ -1,0 +1,137 @@
+.header {
+  padding: 120px 0 60px;
+
+  & .logo {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 40px;
+    background: var(--color-neutral-950);
+    border-radius: 50%;
+  }
+
+  & .name {
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  & .description {
+    margin-top: 4px;
+    color: var(--color-foreground-subtle);
+  }
+
+  & .profileLink {
+    display: inline-block;
+    padding: 6px 20px;
+    margin-top: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--font-2xsm);
+    color: var(--color-foreground-subtler);
+    text-decoration: none;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: 1000px;
+
+    & strong {
+      font-weight: 500;
+      color: var(--color-foreground-subtle);
+    }
+  }
+}
+
+.bio {
+  & .heading {
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  & .content {
+    line-height: 1.6;
+    color: var(--color-foreground-subtle);
+  }
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+
+  & a {
+    line-height: 1.6;
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-foreground-subtler);
+    text-underline-offset: 4px;
+  }
+}
+
+.section {
+  &:not(:last-of-type) {
+    padding-bottom: 80px;
+  }
+
+  & > .title {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    margin-bottom: 32px;
+    font-weight: 500;
+
+    & div {
+      flex-grow: 1;
+      height: 1px;
+      background: var(--color-neutral-200);
+    }
+  }
+
+  & > .content {
+    & .text {
+      line-height: 1.6;
+      color: var(--color-foreground-subtle);
+    }
+  }
+}
+
+.items {
+  & .item {
+    &:not(:last-of-type) {
+      margin-bottom: 28px;
+    }
+
+    & .title {
+      font-weight: 400;
+      color: var(--color-foreground);
+
+      &a {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-decoration-color: var(--color-foreground-subtler);
+        text-underline-offset: 4px;
+      }
+    }
+
+    & .date {
+      margin-top: 4px;
+      font-size: var(--font-sm);
+      color: var(--color-foreground-subtler);
+    }
+
+    & .description {
+      margin-top: 4px;
+      line-height: 1.6;
+      color: var(--color-foreground-subtle);
+    }
+  }
+}
+
+.footer {
+  padding-bottom: 50px;
+  margin-top: 80px;
+  font-size: var(--font-sm);
+  color: var(--color-foreground-subtle);
+
+  & a {
+    font-weight: 500;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+}
