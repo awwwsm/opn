@@ -5,6 +5,7 @@ import type { Profile as IProfile } from '@/types/profile';
 
 import styles from './profile.module.css';
 import { cn } from '@/helpers/styles';
+import { ProfileSchema } from '@/validators/profile';
 
 interface ProfileProps {
   source: string;
@@ -13,12 +14,26 @@ interface ProfileProps {
 
 export function Profile({ source, username }: ProfileProps) {
   const [profile, setProfile] = useState<IProfile | null>(null);
+  const [errors, setErrors] = useState<
+    Array<{ message: string; path: string }>
+  >([]);
 
   const fetchProfile = useCallback(async () => {
     const res = await fetch(source);
-    const data = (await res.json()) as IProfile;
+    const data = await res.json();
 
-    setProfile(data);
+    const parsed = ProfileSchema.safeParse(data);
+
+    if (!parsed.success) {
+      setErrors(
+        parsed.error.issues.map(issue => ({
+          message: issue.message,
+          path: issue.path.join(' → '),
+        })),
+      );
+    } else {
+      setProfile(parsed.data);
+    }
   }, [source]);
 
   useEffect(() => {
@@ -30,6 +45,22 @@ export function Profile({ source, username }: ProfileProps) {
       document.title = `${profile.name} — OPN`;
     }
   }, [profile]);
+
+  if (errors.length > 0) {
+    return (
+      <Container>
+        <div className={styles.errors}>
+          <h1 className={styles.title}>Wrong Format:</h1>
+
+          {errors.map((error, i) => (
+            <p className={styles.error} key={i}>
+              <span>[{error.path}]:</span> {error.message}
+            </p>
+          ))}
+        </div>
+      </Container>
+    );
+  }
 
   if (!profile) return null;
 

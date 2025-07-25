@@ -135,3 +135,27 @@
     text-decoration: none;
   }
 }
+
+.errors {
+  padding: 120px 0;
+
+  & .title {
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  & .error {
+    font-size: var(--font-sm);
+    color: var(--color-foreground-subtle);
+
+    &:not(:last-of-type) {
+      margin-bottom: 12px;
+    }
+
+    & span {
+      font-family: var(--font-mono);
+      color: var(--color-foreground);
+    }
+  }
+}
