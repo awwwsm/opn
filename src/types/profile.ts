@@ -10,14 +10,20 @@ export interface Profile {
           url?: string;
         }>;
         title: string;
+        type: 'list';
       }
     | {
         content: string;
         title: string;
+        type: 'text';
+      }
+    | {
+        links: Array<{
+          title: string;
+          url: string;
+        }>;
+        title: string;
+        type: 'links';
       }
   >;
-  socials?: Array<{
-    title: string;
-    url: string;
-  }>;
 }

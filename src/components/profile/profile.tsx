@@ -24,6 +24,12 @@ export function Profile({ source }: ProfileProps) {
     fetchProfile();
   }, [fetchProfile]);
 
+  useEffect(() => {
+    if (profile?.name) {
+      document.title = `${profile.name} — OPN`;
+    }
+  }, [profile]);
+
   if (!profile) return null;
 
   return (
@@ -39,22 +45,10 @@ export function Profile({ source }: ProfileProps) {
         </a>
       </header>
       <main>
-        {profile.socials && (
-          <Section title="Socials">
-            <div className={cn(styles.socials)}>
-              {profile.socials.map((social, index) => (
-                <a href={social.url} key={index}>
-                  {social.title}
-                </a>
-              ))}
-            </div>
-          </Section>
-        )}
-
         {profile.sections &&
           profile.sections.map((section, index) => (
             <Section key={index} title={section.title}>
-              {'items' in section ? (
+              {section.type === 'list' ? (
                 <div className={styles.items}>
                   {section.items.map((item, index) => (
                     <div className={styles.item} key={index}>
@@ -76,9 +70,17 @@ export function Profile({ source }: ProfileProps) {
                     </div>
                   ))}
                 </div>
-              ) : (
+              ) : section.type === 'text' ? (
                 <p className={styles.text}>{section.content}</p>
-              )}
+              ) : section.type === 'links' ? (
+                <div className={cn(styles.socials)}>
+                  {section.links.map((link, index) => (
+                    <a href={link.url} key={index}>
+                      {link.title}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
             </Section>
           ))}
       </main>
