@@ -11,5 +11,5 @@ export default defineConfig({
   },
   integrations: [react(), sitemap()],
   output: 'server',
-  site: 'https://mnmm.xyz',
+  site: 'https://opn.bio',
 });
