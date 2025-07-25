@@ -8,9 +8,10 @@ import { cn } from '@/helpers/styles';
 
 interface ProfileProps {
   source: string;
+  username: string;
 }
 
-export function Profile({ source }: ProfileProps) {
+export function Profile({ source, username }: ProfileProps) {
   const [profile, setProfile] = useState<IProfile | null>(null);
 
   const fetchProfile = useCallback(async () => {
@@ -41,7 +42,7 @@ export function Profile({ source }: ProfileProps) {
         <p className={styles.description}>{profile.description}</p>
 
         <a className={styles.profileLink} href="https://opn.bio/@remvze">
-          opn.bio/<strong>@remvze</strong>
+          opn.bio/<strong>@{username}</strong>
         </a>
       </header>
       <main>
