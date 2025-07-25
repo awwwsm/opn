@@ -41,7 +41,7 @@ export function Profile({ source, username }: ProfileProps) {
         <h1 className={styles.name}>{profile.name}</h1>
         <p className={styles.description}>{profile.description}</p>
 
-        <a className={styles.profileLink} href="https://opn.bio/@remvze">
+        <a className={styles.profileLink} href={`https://opn.bio/@${username}`}>
           opn.bio/<strong>@{username}</strong>
         </a>
       </header>
