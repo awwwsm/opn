@@ -1,3 +1,79 @@
+.light {
+  & .header {
+    & .logo {
+      background-color: var(--color-neutral-light-950);
+    }
+
+    & .name {
+      color: var(--color-foreground-light);
+    }
+
+    & .description {
+      color: var(--color-foreground-subtle-light);
+    }
+
+    & .profileLink {
+      color: var(--color-foreground-subtler-light);
+      border-color: var(--color-neutral-light-200);
+
+      & strong {
+        color: var(--color-foreground-subtle-light);
+      }
+    }
+  }
+
+  & .socials {
+    & a {
+      color: var(--color-foreground-light);
+      text-decoration-color: var(--color-foreground-subtler-light);
+    }
+  }
+
+  & .section {
+    & > .title {
+      color: var(--color-foreground-light);
+
+      & div {
+        background: var(--color-neutral-light-200);
+      }
+    }
+
+    & > .content {
+      & .text {
+        color: var(--color-foreground-subtle-light);
+      }
+    }
+  }
+
+  & .items {
+    & .item {
+      & .title {
+        color: var(--color-foreground-light);
+
+        &a {
+          text-decoration-color: var(--color-foreground-subtler-light);
+        }
+      }
+
+      & .date {
+        color: var(--color-foreground-subtler-light);
+      }
+
+      & .description {
+        color: var(--color-foreground-subtle-light);
+      }
+    }
+  }
+
+  & .footer {
+    color: var(--color-foreground-subtle-light);
+
+    & a {
+      color: var(--color-foreground-light);
+    }
+  }
+}
+
 .header {
   padding: 120px 0 60px;
 

@@ -47,6 +47,11 @@ const ProfileSchema = z.object({
       error: 'Sections must be an array of valid sections.',
     }),
   ),
+  style: z.optional(
+    z.object({
+      theme: z.optional(z.union([z.literal('dark'), z.literal('light')])),
+    }),
+  ),
   version: z.literal(1, { error: 'Version must be 1.' }),
 });
 

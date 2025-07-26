@@ -26,4 +26,7 @@ export interface Profile {
         type: 'links';
       }
   >;
+  style?: {
+    theme?: 'light' | 'dark';
+  };
 }

@@ -11,8 +11,26 @@
   --color-neutral-900: #f4f4f5;
   --color-neutral-950: #fafafa;
 
+  /* Light */
+  --color-neutral-light-950: #09090b;
+  --color-neutral-light-900: #18181b;
+  --color-neutral-light-800: #27272a;
+  --color-neutral-light-700: #3f3f46;
+  --color-neutral-light-600: #52525b;
+  --color-neutral-light-500: #71717a;
+  --color-neutral-light-400: #a1a1aa;
+  --color-neutral-light-300: #d4d4d8;
+  --color-neutral-light-200: #e4e4e7;
+  --color-neutral-light-100: #f4f4f5;
+  --color-neutral-light-50: #fafafa;
+
   /* Foreground */
   --color-foreground: var(--color-neutral-950);
   --color-foreground-subtle: var(--color-neutral-600);
   --color-foreground-subtler: var(--color-neutral-500);
+
+  /* Foreground Light */
+  --color-foreground-light: var(--color-neutral-light-950);
+  --color-foreground-subtle-light: var(--color-neutral-light-600);
+  --color-foreground-subtler-light: var(--color-neutral-light-500);
 }
