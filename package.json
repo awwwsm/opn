@@ -19,20 +19,28 @@
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",
     "release:patch": "npm run release -- --release-as patch",
-    "generate-id": "node ./scripts/generate-id.js"
+    "generate-id": "node ./scripts/generate-id.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@astrojs/cloudflare": "12.6.0",
     "@astrojs/react": "4.2.1",
     "@astrojs/sitemap": "3.2.1",
+    "@neondatabase/serverless": "1.0.1",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
+    "@upstash/redis": "1.35.1",
     "alpha-sort": "5.0.0",
     "astro": "5.5.1",
+    "dotenv": "17.2.1",
+    "drizzle-orm": "0.44.3",
     "framer-motion": "11.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "5.0.1",
+    "unstorage": "1.16.1",
     "zod": "4.0.10"
   },
   "devDependencies": {
@@ -45,6 +53,7 @@
     "clipboardy": "4.0.0",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
+    "drizzle-kit": "0.31.4",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-alias": "1.1.2",
