@@ -27,6 +27,7 @@ export interface Profile {
       }
   >;
   style?: {
+    font?: 'serif' | 'sans-serif';
     theme?: 'light' | 'dark';
   };
 }

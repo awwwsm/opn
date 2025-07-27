@@ -74,6 +74,10 @@
   }
 }
 
+.serif {
+  font-family: var(--font-serif);
+}
+
 .header {
   padding: 120px 0 60px;
 

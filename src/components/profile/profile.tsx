@@ -69,7 +69,12 @@ export function Profile({ source, username }: ProfileProps) {
   if (!profile) return null;
 
   return (
-    <div className={cn(profile.style?.theme === 'light' && styles.light)}>
+    <div
+      className={cn(
+        profile.style?.theme === 'light' && styles.light,
+        profile.style?.font === 'serif' && styles.serif,
+      )}
+    >
       <Container>
         <header className={styles.header}>
           <div className={styles.logo} />

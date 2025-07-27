@@ -1,6 +1,6 @@
 :root {
-  --font-display: 'Gloock', serif;
   --font-sans: 'Geist', sans-serif;
+  --font-serif: 'Lora', serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
   /* Font Sizes */

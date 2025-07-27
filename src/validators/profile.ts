@@ -49,6 +49,7 @@ const ProfileSchema = z.object({
   ),
   style: z.optional(
     z.object({
+      font: z.optional(z.union([z.literal('serif'), z.literal('sans-serif')])),
       theme: z.optional(z.union([z.literal('dark'), z.literal('light')])),
     }),
   ),
