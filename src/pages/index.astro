@@ -4,7 +4,40 @@ import Layout from '@/layouts/layout.astro';
 ---
 
 <Layout>
-  <Container>
-    <h1>Coming Soon</h1>
-  </Container>
+  <div class="wrapper">
+    <Container>
+      <ul>
+        <li><a href="github.com/opnbio">(GitHub)</a></li>
+        <li><a href="github.com/opnbio/template">(Template)</a></li>
+        <li><a href="github.com/opnbio/docs">(Docs)</a></li>
+      </ul>
+    </Container>
+  </div>
 </Layout>
+
+<style>
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+
+    & ul {
+      list-style-type: none;
+
+      & li {
+        &:not(:last-of-type) {
+          margin-bottom: 8px;
+        }
+
+        text-align: center;
+
+        & a {
+          font-weight: 500;
+          color: var(--color-foreground);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+</style>
