@@ -67,6 +67,8 @@ export const resolveSource = async (
     await incrementOrCreateVisit(username);
 
     return mainResult.url;
+  } else if (mainResult.status === 429) {
+    return mainResult.url;
   }
 
   const masterResult = await fetchSource(username, 'master');
