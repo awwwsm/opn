@@ -17,9 +17,13 @@ export function Profile({ source, username }: ProfileProps) {
   const [errors, setErrors] = useState<
     Array<{ message: string; path: string }>
   >([]);
+  const [error, setError] = useState('');
 
   const fetchProfile = useCallback(async () => {
     const res = await fetch(source);
+
+    if (!res.ok) return setError('Profile not found.');
+
     const data = await res.json();
 
     const parsed = ProfileSchema.safeParse(data);
@@ -37,7 +41,9 @@ export function Profile({ source, username }: ProfileProps) {
   }, [source]);
 
   useEffect(() => {
-    fetchProfile();
+    fetchProfile().catch(() =>
+      setError('Something went wrong. The JSON file might be invalid.'),
+    );
   }, [fetchProfile]);
 
   useEffect(() => {
@@ -49,6 +55,16 @@ export function Profile({ source, username }: ProfileProps) {
       document.body.style.background = 'var(--color-neutral-950)';
     }
   }, [profile]);
+
+  if (error) {
+    return (
+      <div className={styles.error}>
+        <Container>
+          <p className={styles.errorText}>Error: {error}</p>
+        </Container>
+      </div>
+    );
+  }
 
   if (errors.length > 0) {
     return (

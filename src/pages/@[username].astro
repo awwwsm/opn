@@ -1,11 +1,8 @@
 ---
-import { eq, sql } from 'drizzle-orm';
-
 import Layout from '@/layouts/layout.astro';
 import { Profile } from '@/components/profile';
-import { storage } from '@/database/redis';
-import { db } from '@/database/drizzle';
-import { profilesTable } from '@/database/schema';
+
+import { resolveSource } from '@/lib/profile';
 
 const username = Astro.params.username?.toLowerCase();
 
@@ -13,49 +10,10 @@ if (!username) {
   return Astro.rewrite('/404');
 }
 
-const createOrLogVisit = async () => {
-  const profile = (
-    await db
-      .select()
-      .from(profilesTable)
-      .where(eq(profilesTable.username, username))
-  )[0];
+const source = await resolveSource(username);
 
-  if (!profile) {
-    await db.insert(profilesTable).values({ username, visits: 1 });
-  } else if (profile.isActive !== false) {
-    await db
-      .update(profilesTable)
-      .set({ visits: sql`${profilesTable.visits} + 1` })
-      .where(eq(profilesTable.username, username));
-  }
-};
-
-const source = `https://raw.githubusercontent.com/${username}/.opn/refs/heads/main/bio.json`;
-
-const existsInCache = await storage.getItem(`profile:${username}`);
-
-if (existsInCache) {
-  await createOrLogVisit();
-} else {
-  const res = await fetch(source);
-  const { status } = res;
-
-  if (status === 200) {
-    await storage.setItem(`profile:${username}`, true, {
-      ttl: 60 * 60,
-    });
-    await createOrLogVisit();
-  }
-
-  if (status === 404) {
-    await db
-      .update(profilesTable)
-      .set({ isActive: false })
-      .where(eq(profilesTable.username, username));
-
-    return Astro.rewrite('/404');
-  }
+if (!source) {
+  return Astro.rewrite('/404');
 }
 ---
 

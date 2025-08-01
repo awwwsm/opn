@@ -78,6 +78,18 @@
   font-family: var(--font-serif);
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+
+  & .errorText {
+    font-size: var(--font-sm);
+    text-align: center;
+  }
+}
+
 .header {
   padding: 120px 0 60px;
 
