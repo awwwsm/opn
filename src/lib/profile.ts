@@ -17,10 +17,10 @@ const incrementOrCreateVisit = async (username: string) => {
 
   if (!profile) {
     await db.insert(profilesTable).values({ username, visits: 1 });
-  } else if (profile.isActive !== false) {
+  } else {
     await db
       .update(profilesTable)
-      .set({ visits: sql`${profilesTable.visits} + 1` })
+      .set({ isActive: true, visits: sql`${profilesTable.visits} + 1` })
       .where(eq(profilesTable.username, username));
   }
 };
