@@ -4,40 +4,191 @@ import Layout from '@/layouts/layout.astro';
 ---
 
 <Layout>
-  <div class="wrapper">
-    <Container>
-      <ul>
-        <li><a href="https://github.com/awwwsm/opn">(GitHub)</a></li>
-        <li><a href="https://github.com/awwwsm/opn-template">(Template)</a></li>
-        <li><a href="https://github.com/awwwsm/opn-docs">(Docs)</a></li>
-      </ul>
-    </Container>
-  </div>
+  <Container>
+    <section class="hero">
+      <div class="logo"></div>
+      <h1>OPN<span>.bio</span></h1>
+      <p>Your open-source bio page.</p>
+    </section>
+
+    <section class="section">
+      <h2>What is OPN?</h2>
+      <p>
+        <strong>OPN</strong> is an open-source bio page that lives on your GitHub.
+        Instead of creating yet another account, all you need is a public repo named
+        <strong>.opn</strong> with a simple <code>bio.json</code> file inside. From
+        there, your profile is generated automatically and stays fully in your control.
+        (Example: <a class="mono" href="https://opn.bio/@remvze"
+          >opn.bio/@remvze</a
+        >)
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>How to Get Started?</h2>
+      <p>
+        Getting your <strong>OPN</strong> page live takes just a couple of steps:
+      </p>
+      <ol>
+        <li>
+          <strong>Clone the template</strong>: Fork or clone the <a
+            href="https://github.com/opnbio/opn-template">OPN template repo</a
+          > to your own GitHub account.
+        </li>
+        <li>
+          <strong>Name it <code>.opn</code></strong>: Rename the repo to <code
+            >.opn</code
+          > so <strong>OPN</strong> knows where to look.
+        </li>
+        <li>
+          <strong>Edit <code>bio.json</code></strong>: Open the <code
+            >bio.json</code
+          > file inside and update it with your own details.
+        </li>
+      </ol>
+
+      <p>
+        That’s it! Your bio page will be generated automatically and available
+        at <code>opn.bio/@your-github-username</code>. For the full schema and
+        customization options, check out the <a
+          href="https://github.com/opnbio/opn-docs/blob/main/schema.md"
+          >bio.json docs</a
+        >.
+      </p>
+    </section>
+
+    <footer>
+      Check OPN on <a href="https://github.com/opnbio/opn">GitHub</a>.
+    </footer>
+  </Container>
 </Layout>
 
 <style>
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100dvh;
+  .hero {
+    padding: 120px 0 60px;
 
-    & ul {
-      list-style-type: none;
+    & .logo {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 40px;
+      background-color: var(--color-neutral-950);
+      border-radius: 50%;
+    }
 
-      & li {
-        &:not(:last-of-type) {
-          margin-bottom: 8px;
-        }
+    & h1 {
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: var(--color-foreground);
 
-        text-align: center;
+      & span {
+        display: inline-block;
+        margin-left: 2px;
+        font-family: var(--font-mono);
+        font-size: var(--font-xsm);
+        font-weight: 400;
+        color: var(--color-foreground-subtler);
+      }
+    }
 
-        & a {
-          font-weight: 500;
-          color: var(--color-foreground);
-          text-decoration: none;
+    & p {
+      color: var(--color-foreground-subtle);
+    }
+  }
+
+  .section {
+    &:not(:last-of-type) {
+      margin-bottom: 60px;
+    }
+
+    & h2 {
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    & p {
+      line-height: 1.6;
+      color: var(--color-foreground-subtle);
+
+      & strong {
+        font-weight: 500;
+        color: var(--color-foreground);
+      }
+
+      & code {
+        display: inline-block;
+        padding: 2px 8px;
+        margin: 0 2px;
+        font-family: var(--font-mono);
+        font-size: var(--font-xsm);
+        color: var(--color-foreground);
+        background: var(--color-neutral-100);
+        border-radius: 8px;
+        box-shadow: inset 0 -1px 0 var(--color-neutral-300);
+      }
+
+      & a {
+        color: var(--color-foreground);
+        text-decoration: underline dotted var(--color-foreground-subtler);
+        text-underline-offset: 4px;
+
+        &.mono {
+          font-family: var(--font-mono);
         }
       }
+    }
+
+    & ol {
+      padding-left: 36px;
+      margin: 16px 0;
+
+      & li {
+        line-height: 1.6;
+        color: var(--color-foreground-subtle);
+        list-style-type: decimal-leading-zero;
+
+        &:not(:last-of-type) {
+          margin-bottom: 16px;
+        }
+
+        &::marker {
+          color: var(--color-foreground-subtler);
+        }
+
+        & strong {
+          font-weight: 500;
+          color: var(--color-foreground);
+        }
+
+        & code {
+          display: inline-block;
+          padding: 2px 8px;
+          margin: 0 2px;
+          font-family: var(--font-mono);
+          font-size: var(--font-xsm);
+          color: var(--color-foreground);
+          background: var(--color-neutral-100);
+          border-radius: 8px;
+          box-shadow: inset 0 -1px 0 var(--color-neutral-300);
+        }
+
+        & a {
+          color: var(--color-foreground);
+          text-decoration: underline dotted var(--color-foreground-subtler);
+          text-underline-offset: 4px;
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 60px 0;
+    font-size: var(--font-sm);
+    color: var(--color-foreground-subtle);
+
+    & a {
+      color: var(--color-foreground);
+      text-decoration: underline dotted var(--color-foreground-subtler);
+      text-underline-offset: 4px;
     }
   }
 </style>
