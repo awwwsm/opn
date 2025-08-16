@@ -83,7 +83,7 @@
   font-family: var(--font-serif);
 }
 
-.error {
+.singleError {
   display: flex;
   align-items: center;
   justify-content: center;

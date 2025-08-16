@@ -59,7 +59,7 @@ export function Profile({ source, username }: ProfileProps) {
 
   if (error) {
     return (
-      <div className={styles.error}>
+      <div className={styles.singleError}>
         <Container>
           <p className={styles.errorText}>Error: {error}</p>
         </Container>
