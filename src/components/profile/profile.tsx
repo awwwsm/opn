@@ -93,9 +93,9 @@ export function Profile({ source, username }: ProfileProps) {
       )}
     >
       <Container>
-        <header className={styles.header}>
-          <div className={styles.logo} />
+        <div className={styles.logo} />
 
+        <header className={styles.header}>
           <h1 className={styles.name}>{profile.name}</h1>
           <p className={styles.description}>{profile.description}</p>
 

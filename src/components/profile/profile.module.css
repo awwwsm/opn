@@ -95,16 +95,19 @@
   }
 }
 
-.header {
-  padding: 120px 0 60px;
+.logo {
+  position: sticky;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  margin-top: 120px;
+  background: var(--color-neutral-950);
+  border-radius: 50%;
+  mix-blend-mode: exclusion;
+}
 
-  & .logo {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 40px;
-    background: var(--color-neutral-950);
-    border-radius: 50%;
-  }
+.header {
+  padding: 40px 0 60px;
 
   & .name {
     font-weight: 500;
