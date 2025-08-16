@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { MdArrowOutward } from 'react-icons/md';
 
 import { Container } from '../container';
 import type { Profile as IProfile } from '@/types/profile';
@@ -116,6 +117,9 @@ export function Profile({ source, username }: ProfileProps) {
                         {item.url ? (
                           <a className={styles.title} href={item.url}>
                             {item.title}
+                            <span>
+                              <MdArrowOutward />
+                            </span>
                           </a>
                         ) : (
                           <p className={styles.title}>{item.title}</p>

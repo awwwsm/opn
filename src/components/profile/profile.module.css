@@ -19,6 +19,15 @@
       & strong {
         color: var(--color-foreground-subtle-light);
       }
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-neutral-light-500),
+          transparent
+        );
+      }
     }
   }
 
@@ -32,10 +41,6 @@
   & .section {
     & > .title {
       color: var(--color-foreground-light);
-
-      & div {
-        border-color: var(--color-neutral-light-200);
-      }
     }
 
     & > .content {
@@ -112,6 +117,7 @@
   }
 
   & .profileLink {
+    position: relative;
     display: inline-block;
     padding: 6px 12px;
     margin-top: 20px;
@@ -121,9 +127,35 @@
     text-decoration: none;
     border: 1px solid var(--color-neutral-200);
     border-radius: 1000px;
+    transition: 0.2s;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &::before {
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 70%;
+      height: 1px;
+      content: '';
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-neutral-500),
+        transparent
+      );
+      opacity: 0;
+      transition: 0.2s;
+      transform: translateX(-50%);
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
 
     & strong {
-      font-weight: 500;
       color: var(--color-foreground-subtle);
     }
   }
@@ -167,12 +199,6 @@
     align-items: center;
     margin-bottom: 32px;
     font-weight: 500;
-
-    & div {
-      flex-grow: 1;
-      height: 0;
-      border-top: 1px dashed var(--color-neutral-200);
-    }
   }
 
   & > .content {
@@ -198,6 +224,24 @@
         text-decoration-style: dotted;
         text-decoration-color: var(--color-foreground-subtler);
         text-underline-offset: 4px;
+
+        & span {
+          display: inline-block;
+          margin-left: 2px;
+          font-size: var(--font-sm);
+          opacity: 0;
+          transition: 0.2s;
+          transition-delay: 0.1s;
+          transform: translateY(1px) scale(0.5);
+          transform-origin: bottom left;
+        }
+
+        &:hover {
+          & span {
+            opacity: 1;
+            transform: translateY(1px) scale(1);
+          }
+        }
       }
     }
 
